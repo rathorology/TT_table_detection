@@ -1,5 +1,8 @@
 import cv2
+import os
 
+if not os.path.exists("frames"):
+    os.makedirs("frames")
 
 video = 'set2-1.MOV'
 
@@ -36,5 +39,5 @@ while (cap.isOpened()):
     # Break the loop
     else:
         break
-
+cap.release()
 cv2.destroyAllWindows()
