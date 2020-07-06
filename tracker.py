@@ -25,7 +25,6 @@ for i in range((len(images) - 1)):
     # mask = cv2.adaptiveThreshold(mask, 255, cv2.ADAPTIVE_THRESH_MEAN_C, \
     #                              cv2.THRESH_BINARY, 11, 2)
     mask = cv2.adaptiveThreshold(mask, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, 101, 0)
-    # ellipseMask, contourMask = findEllipses(mask)
     cnts, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     plot_img = normal_images[i]
     hierarchy = hierarchy[0]
@@ -55,5 +54,6 @@ for i in range((len(images) - 1)):
     cv2.imshow('Image', plot_img)
     cv2.imshow('Mask', mask)
     cv2.waitKey(0)
-
-
+    # Press Q on keyboard to  exit
+    if cv2.waitKey(25) & 0xFF == ord('q'):
+        break

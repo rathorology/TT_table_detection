@@ -39,8 +39,11 @@ for i in range((len(images) - 1)):
     mask = cv2.absdiff(images[i], images[i + 1])
     mask = cv2.adaptiveThreshold(mask, 255, cv2.ADAPTIVE_THRESH_MEAN_C, \
                                  cv2.THRESH_BINARY, 11, 2)
-    cv2.imwrite('new_frames/' + str(cnt) + '.png', mask)
+    # cv2.imwrite('new_frames/' + str(cnt) + '.png', mask)
     cnt = cnt + 1
     out.write(mask)
     cv2.imshow('Mask', mask)
-    cv2.waitKey(1)
+    cv2.waitKey(0)
+    # Press Q on keyboard to  exit
+    if cv2.waitKey(25) & 0xFF == ord('q'):
+        break
